@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgRdtResultPositive = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -21,7 +15,7 @@ const SvgRdtResultPositive = (
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#rdt_result_positive_svg__a)" fill="#000">
+      <g clipPath="url(#rdt_result_positive_svg__a)" fill={props.color}>
         <path d="M18 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM16.5 32.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
         <path
           fillRule="evenodd"

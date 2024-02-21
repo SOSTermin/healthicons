@@ -1,15 +1,6 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
-const SvgY = (
-  passedProps: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
+const SvgY = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
   return (
     <svg
       width="1.5em"
@@ -25,7 +16,7 @@ const SvgY = (
         fillRule="evenodd"
         clipRule="evenodd"
         d="M35.28 10.464a2 2 0 0 1 .256 2.816L26 24.724V36a2 2 0 0 1-4 0V24.724L12.464 13.28a2 2 0 1 1 3.072-2.56L24 20.876l8.464-10.156a2 2 0 0 1 2.816-.256Z"
-        fill="#000"
+        fill={props.color}
       />
     </svg>
   );

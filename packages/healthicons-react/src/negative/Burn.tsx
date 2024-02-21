@@ -1,15 +1,6 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
-const SvgBurn = (
-  passedProps: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
+const SvgBurn = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
   return (
     <svg
       width="1.5em"
@@ -22,7 +13,7 @@ const SvgBurn = (
       {...props}
     >
       <g clipPath="url(#burn_svg__a)">
-        <path d="M0 0h48v48H0V0Z" fill="#000" />
+        <path d="M0 0h48v48H0V0Z" fill={props.color} />
         <path
           d="M42.999 26.499a1.5 1.5 0 0 0-1.5-1.5h-15.5v-2h12.5a1.5 1.5 0 0 0 0-3H22.914c-1.905 0-2.732-2.41-1.228-3.579l4.097-3.186a1.518 1.518 0 0 0-1.72-2.496l-11.391 6.89L11.5 16l11.524-6.972a3.518 3.518 0 0 1 3.986 5.784L22.915 18h15.585a3.5 3.5 0 0 1 3.161 5.004 3.5 3.5 0 0 1 0 6.992A3.5 3.5 0 0 1 38.5 35h-2.837a3.5 3.5 0 0 1-3.163 5H12.813L15.5 38l16.999-.001a1.5 1.5 0 0 0 0-3h-8.618v-2H38.5a1.5 1.5 0 0 0 0-3h-12.5v-2h15.5a1.5 1.5 0 0 0 1.5-1.5Z"
           fill="#fff"

@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgTriangleMedium = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -23,7 +17,7 @@ const SvgTriangleMedium = (
     >
       <path
         d="M24.894 8.553a1 1 0 0 0-1.788 0l-15 30A1 1 0 0 0 9 40h30a1 1 0 0 0 .894-1.447l-15-30Z"
-        fill="#000"
+        fill={props.color}
       />
     </svg>
   );

@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgHearingAid = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -21,7 +15,7 @@ const SvgHearingAid = (
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#hearing_aid_svg__a)" fill="#000">
+      <g clipPath="url(#hearing_aid_svg__a)" fill={props.color}>
         <path d="M22.567 24.13a7.034 7.034 0 0 1-2.56-2.43L16.83 25.78l1.58 1.58 4.155-3.231Z" />
         <path
           fillRule="evenodd"

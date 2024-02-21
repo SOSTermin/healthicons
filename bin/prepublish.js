@@ -28,4 +28,3 @@ function publishNpmPackage(name) {
 
 publishNpmPackage("healthicons");
 publishNpmPackage("healthicons-react");
-publishNpmPackage("healthicons-react-native");

@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgIDocumentsDenied = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -21,7 +15,7 @@ const SvgIDocumentsDenied = (
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#i_documents_denied_svg__a)" fill="#000">
+      <g clipPath="url(#i_documents_denied_svg__a)" fill={props.color}>
         <path d="m29 8 6 6h-5a1 1 0 0 1-1-1V8ZM22.707 20.293a1 1 0 0 0-1.414 1.414L24.586 25l-3.293 3.293a1 1 0 0 0 1.414 1.414L26 26.414l3.293 3.293a1 1 0 0 0 1.414-1.414L27.414 25l3.293-3.293a1 1 0 0 0-1.414-1.414L26 23.586l-3.293-3.293Z" />
         <path
           fillRule="evenodd"

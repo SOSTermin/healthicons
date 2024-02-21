@@ -16,17 +16,11 @@ const ignoreCleanFilenames = ["HealthIconsContext.tsx"];
 // Targets for building icons
 const targets = {
   "meta-data": { path: "meta-data.json" },
-  css: { path: "css/healthicons.css" },
   "healthicons-react": {
     react: true,
     path: "packages/healthicons-react",
     iconTypes: ["filled", "outline", "negative"],
-  },
-  "healthicons-react-native": {
-    react: true,
-    path: "packages/healthicons-react-native",
-    iconTypes: ["filled", "outline", "negative"],
-  },
+  }
 };
 
 const deepReadDir = async (dirPath) =>
@@ -86,43 +80,6 @@ const tasks = new Listr(
                       (file) => file.split("healthicons/icons/")[1]
                     ),
                   })
-                );
-              },
-            },
-            {
-              title: "Building CSS file",
-              enabled: () =>
-                cliTargets.length === 0 || cliTargets.includes("css"),
-              task: async (ctx) => {
-                const content = [
-                  (
-                    await fs.readFile(
-                      path.join(__dirname, "header.css"),
-                      "utf8"
-                    )
-                  ).replace("[YEAR]", new Date().getFullYear()),
-                ];
-                ctx.healthIconsFiles.forEach((file) => {
-                  const fileContents = readFileSync(file).toString();
-                  const optimizedContent = optimize(fileContents);
-
-                  const iconType = file
-                    .split("healthicons/icons/")[1]
-                    .split("/")[0];
-                  const iconName = path.parse(file).name.replaceAll("_", "-");
-                  const dstFileName = `${iconType}-${
-                    iconName in incompatibleNames
-                      ? incompatibleNames[iconName]
-                      : iconName
-                  }`;
-
-                  content.push(
-                    `.healthicons-${dstFileName}::before{mask-image:url('data:image/svg+xml;charset=utf-8,${optimizedContent.data}');-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,${optimizedContent.data}');}`
-                  );
-                });
-                await fs.writeFile(
-                  path.join(rootDir, targets.css.path),
-                  content
                 );
               },
             },

@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgRuralPost = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -21,7 +15,7 @@ const SvgRuralPost = (
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#rural_post_svg__a)" fill="#000">
+      <g clipPath="url(#rural_post_svg__a)" fill={props.color}>
         <path d="M32 12h-2v2h-2v2h2v2h2v-2h2v-2h-2v-2Z" />
         <path
           fillRule="evenodd"

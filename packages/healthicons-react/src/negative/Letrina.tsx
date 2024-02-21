@@ -1,15 +1,9 @@
 import * as React from "react";
 import { SVGProps, Ref, forwardRef } from "react";
-import { HealthIconsContext } from "../HealthIconsContext";
 const SvgLetrina = (
-  passedProps: SVGProps<SVGSVGElement>,
+  props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
 ) => {
-  const context = React.useContext(HealthIconsContext);
-  const props = {
-    ...context,
-    ...passedProps,
-  };
   return (
     <svg
       width="1.5em"
@@ -21,7 +15,7 @@ const SvgLetrina = (
       ref={ref}
       {...props}
     >
-      <g clipPath="url(#letrina_svg__a)" fill="#000">
+      <g clipPath="url(#letrina_svg__a)" fill={props.color}>
         <path d="M21 11h6l-6.518.033A4.03 4.03 0 0 1 21 11Z" />
         <path
           fillRule="evenodd"
