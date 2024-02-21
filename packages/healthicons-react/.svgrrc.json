@@ -1,6 +1,5 @@
 {
   "icon": true,
-  "ref": true,
   "typescript": true,
   "svgProps": {
     "width": "1.5em",

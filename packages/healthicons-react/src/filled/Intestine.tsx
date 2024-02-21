@@ -1,9 +1,6 @@
 import * as React from "react";
-import { SVGProps, Ref, forwardRef } from "react";
-const SvgIntestine = (
-  props: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
+import { SVGProps } from "react";
+const SvgIntestine = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="1.5em"
@@ -12,7 +9,6 @@ const SvgIntestine = (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       color="currentColor"
-      ref={ref}
       {...props}
     >
       <path
@@ -22,5 +18,4 @@ const SvgIntestine = (
     </svg>
   );
 };
-const ForwardRef = forwardRef(SvgIntestine);
-export default ForwardRef;
+export default SvgIntestine;

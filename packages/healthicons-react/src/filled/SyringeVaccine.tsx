@@ -1,9 +1,6 @@
 import * as React from "react";
-import { SVGProps, Ref, forwardRef } from "react";
-const SvgSyringeVaccine = (
-  props: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
+import { SVGProps } from "react";
+const SvgSyringeVaccine = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="1.5em"
@@ -12,7 +9,6 @@ const SvgSyringeVaccine = (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       color="currentColor"
-      ref={ref}
       {...props}
     >
       <path
@@ -24,5 +20,4 @@ const SvgSyringeVaccine = (
     </svg>
   );
 };
-const ForwardRef = forwardRef(SvgSyringeVaccine);
-export default ForwardRef;
+export default SvgSyringeVaccine;

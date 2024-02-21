@@ -3,7 +3,6 @@ import { promises as fs, readFileSync } from "fs";
 import { Listr } from "listr2";
 import os from "os";
 import path, { dirname } from "path";
-import { optimize } from "svgo";
 import { fileURLToPath } from "url";
 import { incompatibleNames } from "../constants.js";
 
@@ -14,14 +13,20 @@ const healthiconsIconsDir = path.join(rootDir, "icons");
 const ignoreCleanFilenames = ["HealthIconsContext.tsx"];
 
 // Targets for building icons
+const icons = ['intestine', 'tooth',
+'syringe-vaccine', 'stomach', 'outpatient',
+'orthopaedics', 'intestinal-pain', 'group_discussion_meeting',
+'fruits', 'doctor', 'cardiology']
+
 const targets = {
   "meta-data": { path: "meta-data.json" },
   "healthicons-react": {
     react: true,
     path: "packages/healthicons-react",
-    iconTypes: ["filled", "outline", "negative"],
+    iconTypes: ["outline"],
   }
 };
+
 
 const deepReadDir = async (dirPath) =>
   await Promise.all(
@@ -59,7 +64,12 @@ const tasks = new Listr(
         deepReadDir(healthiconsIconsDir);
         ctx.healthIconsFiles = (await deepReadDir(healthiconsIconsDir))
           .flat(Number.POSITIVE_INFINITY)
-          .filter((val) => val.includes(".svg"));
+          .filter((val) => val.includes(".svg"))
+          .filter((val) => {
+            const iconName = val.split("/").pop().split(".")[0];
+            return icons.includes(iconName)
+          });
+          console.log(ctx.healthIconsFiles)
       },
     },
     {
@@ -153,11 +163,11 @@ const tasks = new Listr(
                         const targetsToBuild =
                           cliTargets.length > 0
                             ? cliTargets.filter(
-                                (cliTarget) => targets[cliTarget]?.react
-                              )
+                              (cliTarget) => targets[cliTarget]?.react
+                            )
                             : Object.keys(targets).filter(
-                                (target) => targets[target].react
-                              );
+                              (target) => targets[target].react
+                            );
                         const tasks = targetsToBuild.map((target) => {
                           const builtIconsDir = path.join(
                             rootDir,

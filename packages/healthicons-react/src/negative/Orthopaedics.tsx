@@ -1,9 +1,6 @@
 import * as React from "react";
-import { SVGProps, Ref, forwardRef } from "react";
-const SvgOrthopaedics = (
-  props: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
+import { SVGProps } from "react";
+const SvgOrthopaedics = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="1.5em"
@@ -12,7 +9,6 @@ const SvgOrthopaedics = (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       color="currentColor"
-      ref={ref}
       {...props}
     >
       <g clipPath="url(#orthopaedics_svg__a)">
@@ -31,5 +27,4 @@ const SvgOrthopaedics = (
     </svg>
   );
 };
-const ForwardRef = forwardRef(SvgOrthopaedics);
-export default ForwardRef;
+export default SvgOrthopaedics;
